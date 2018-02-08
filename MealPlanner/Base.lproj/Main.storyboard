@@ -11,8 +11,8 @@
     </dependencies>
     <customFonts key="customFonts">
         <array key="AvenirNext.ttc">
+            <string>AvenirNext-Bold</string>
             <string>AvenirNext-DemiBold</string>
-            <string>AvenirNext-Regular</string>
         </array>
     </customFonts>
     <scenes>
@@ -28,9 +28,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vhh-6l-nGg">
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vhh-6l-nGg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.63921568627450975" green="0.792156862745098" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.28091534969999998" green="0.18145813050000001" blue="0.12559475" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="-30" translatesAutoresizingMaskIntoConstraints="NO" id="6xk-MV-B9q">
                                 <rect key="frame" x="13.5" y="116" width="308.5" height="72"/>
@@ -56,39 +56,127 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9pc-Oa-XAO" customClass="RoundedTextField" customModule="MealPlanner" customModuleProvider="target">
-                                <rect key="frame" x="55" y="241" width="265" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="n03-Lh-67m">
+                                <rect key="frame" x="30" y="218" width="315" height="94"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9pc-Oa-XAO" customClass="RoundedTextField" customModule="MealPlanner" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="Fsa-N1-gvB"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zb0-8h-D3e" customClass="RoundedTextField" customModule="MealPlanner" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="52" width="315" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="XmW-Kf-zlx"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvx-UQ-Upm" customClass="RoundedButton" customModule="MealPlanner" customModuleProvider="target">
+                                <rect key="frame" x="30" y="552.5" width="315" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="mSn-up-0dK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Log In">
+                                    <color key="titleColor" red="0.28091534972190857" green="0.18145813047885895" blue="0.12559475004673004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
                                         <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="2"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                            </textField>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecK-Ng-MGL">
+                                <rect key="frame" x="187.5" y="328" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="zcR-W2-nnV">
+                                <rect key="frame" x="67.5" y="358" width="240" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEE-Tu-j01">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="7Ia-YT-yqh"/>
+                                            <constraint firstAttribute="width" constant="100" id="hSq-DX-QpR"/>
+                                        </constraints>
+                                        <state key="normal" image="Facebook528"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKz-f3-Kfz">
+                                        <rect key="frame" x="140" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="AIE-Xq-5cm"/>
+                                            <constraint firstAttribute="height" constant="100" id="Uag-hS-u6Y"/>
+                                        </constraints>
+                                        <state key="normal" image="Gmail528"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="vvx-UQ-Upm" firstAttribute="leading" secondItem="yYS-TU-vs6" secondAttribute="leading" constant="30" id="4qb-hQ-g8e"/>
                             <constraint firstItem="Vhh-6l-nGg" firstAttribute="trailing" secondItem="yYS-TU-vs6" secondAttribute="trailing" id="5G9-8Q-rST"/>
+                            <constraint firstItem="n03-Lh-67m" firstAttribute="leading" secondItem="yYS-TU-vs6" secondAttribute="leading" constant="30" id="6ky-qi-QD8"/>
                             <constraint firstItem="Vhh-6l-nGg" firstAttribute="bottom" secondItem="yYS-TU-vs6" secondAttribute="bottom" id="FJV-Uk-Kba"/>
                             <constraint firstItem="Vhh-6l-nGg" firstAttribute="top" secondItem="epg-b2-9Ks" secondAttribute="top" id="FjM-IF-s0x"/>
+                            <constraint firstItem="zcR-W2-nnV" firstAttribute="top" secondItem="ecK-Ng-MGL" secondAttribute="bottom" constant="30" id="Gg0-LB-d3n"/>
                             <constraint firstItem="yYS-TU-vs6" firstAttribute="bottom" secondItem="LLb-Hd-NpB" secondAttribute="bottom" constant="8" id="GzR-KB-keu"/>
+                            <constraint firstItem="ecK-Ng-MGL" firstAttribute="centerX" secondItem="epg-b2-9Ks" secondAttribute="centerX" id="IN6-Co-bF7"/>
+                            <constraint firstItem="yYS-TU-vs6" firstAttribute="trailing" secondItem="n03-Lh-67m" secondAttribute="trailing" constant="30" id="MmI-ce-F8M"/>
                             <constraint firstItem="6xk-MV-B9q" firstAttribute="top" secondItem="yYS-TU-vs6" secondAttribute="top" constant="96" id="QDH-JR-Kc5"/>
                             <constraint firstItem="yYS-TU-vs6" firstAttribute="trailing" secondItem="LLb-Hd-NpB" secondAttribute="trailing" constant="8" id="QMm-SH-9bp"/>
                             <constraint firstItem="6xk-MV-B9q" firstAttribute="centerX" secondItem="epg-b2-9Ks" secondAttribute="centerX" constant="-20" id="YN7-mv-Egb"/>
+                            <constraint firstItem="yYS-TU-vs6" firstAttribute="trailing" secondItem="vvx-UQ-Upm" secondAttribute="trailing" constant="30" id="ZPc-eZ-fBd"/>
                             <constraint firstItem="Vhh-6l-nGg" firstAttribute="leading" secondItem="yYS-TU-vs6" secondAttribute="leading" id="eXe-9n-QkR"/>
                             <constraint firstItem="LLb-Hd-NpB" firstAttribute="leading" secondItem="yYS-TU-vs6" secondAttribute="leading" constant="8" id="gUl-YP-bHS"/>
+                            <constraint firstItem="ecK-Ng-MGL" firstAttribute="top" secondItem="n03-Lh-67m" secondAttribute="bottom" constant="16" id="gxO-gX-jNb"/>
+                            <constraint firstItem="zcR-W2-nnV" firstAttribute="centerX" secondItem="epg-b2-9Ks" secondAttribute="centerX" id="hja-Lc-Doz"/>
+                            <constraint firstItem="LLb-Hd-NpB" firstAttribute="top" secondItem="vvx-UQ-Upm" secondAttribute="bottom" constant="18" id="pug-tF-Vjr"/>
+                            <constraint firstItem="n03-Lh-67m" firstAttribute="top" secondItem="6xk-MV-B9q" secondAttribute="bottom" constant="30" id="v60-Vf-vG5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yYS-TU-vs6"/>
                     </view>
@@ -113,6 +201,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Facebook528" width="528" height="528"/>
+        <image name="Gmail528" width="528" height="528"/>
         <image name="MealPlannerLogoWhite96" width="96" height="96"/>
         <image name="TableBackground" width="4872" height="2656"/>
     </resources>

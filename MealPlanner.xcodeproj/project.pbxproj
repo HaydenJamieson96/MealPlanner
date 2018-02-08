@@ -20,6 +20,7 @@
 		1073A4EA202B5DAA00506562 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073A4E9202B5DAA00506562 /* CoreDataService.swift */; };
 		109C7106202C9F30002F04EE /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109C7105202C9F30002F04EE /* LoginVC.swift */; };
 		109C7108202CAF4E002F04EE /* RoundTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109C7107202CAF4E002F04EE /* RoundTextField.swift */; };
+		109C710A202CB5DC002F04EE /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109C7109202CB5DC002F04EE /* RoundedButton.swift */; };
 		18D05626AE15C97220107F50 /* Pods_MealPlannerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60874868B95252113A683EB2 /* Pods_MealPlannerTests.framework */; };
 		91173D7EFCF4BEDC3D145606 /* Pods_MealPlannerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58EEDA34F3B2608433B6C61 /* Pods_MealPlannerUITests.framework */; };
 		CF6BA06ABABAD4D44F8BB622 /* Pods_MealPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DEBE534B17553EA27803215 /* Pods_MealPlanner.framework */; };
@@ -62,6 +63,7 @@
 		1073A4E9202B5DAA00506562 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		109C7105202C9F30002F04EE /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		109C7107202CAF4E002F04EE /* RoundTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundTextField.swift; sourceTree = "<group>"; };
+		109C7109202CB5DC002F04EE /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		110D799DD5E10B933B1BDB6C /* Pods-MealPlannerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MealPlannerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MealPlannerTests/Pods-MealPlannerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2DEBE534B17553EA27803215 /* Pods_MealPlanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MealPlanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5124B22801C6413FCD1E9CD9 /* Pods-MealPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MealPlanner.release.xcconfig"; path = "Pods/Target Support Files/Pods-MealPlanner/Pods-MealPlanner.release.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				109C7107202CAF4E002F04EE /* RoundTextField.swift */,
+				109C7109202CB5DC002F04EE /* RoundedButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				1073A4B7202B54F300506562 /* MealPlanner.xcdatamodeld in Sources */,
 				1073A4B1202B54F300506562 /* ExploreVC.swift in Sources */,
 				109C7106202C9F30002F04EE /* LoginVC.swift in Sources */,
+				109C710A202CB5DC002F04EE /* RoundedButton.swift in Sources */,
 				109C7108202CAF4E002F04EE /* RoundTextField.swift in Sources */,
 				1073A4EA202B5DAA00506562 /* CoreDataService.swift in Sources */,
 				1073A4AF202B54F300506562 /* AppDelegate.swift in Sources */,
