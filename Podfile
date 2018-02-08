@@ -9,6 +9,9 @@ target 'MealPlanner' do
   pod 'SwiftyJSON'
   pod 'Alamofire'
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
   # Pods for MealPlanner
 
   target 'MealPlannerTests' do
