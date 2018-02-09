@@ -28,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vhh-6l-nGg">
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vhh-6l-nGg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.28091534969999998" green="0.18145813050000001" blue="0.12559475" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
@@ -127,6 +127,9 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signInTapped:" destination="Upi-EN-zyW" eventType="touchUpInside" id="cgU-bn-AnZ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecK-Ng-MGL">
                                 <rect key="frame" x="187.5" y="328" width="0.0" height="0.0"/>
@@ -155,6 +158,9 @@
                                             <constraint firstAttribute="height" constant="100" id="Uag-hS-u6Y"/>
                                         </constraints>
                                         <state key="normal" image="Gmail528"/>
+                                        <connections>
+                                            <action selector="gmailBtnTapped:" destination="Upi-EN-zyW" eventType="touchUpInside" id="hE5-jw-YWC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -183,6 +189,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yYS-TU-vs6"/>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="9pc-Oa-XAO" id="GIT-l5-eb3"/>
+                        <outlet property="passwordField" destination="zb0-8h-D3e" id="EI2-cH-EMF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uw7-Yn-P3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

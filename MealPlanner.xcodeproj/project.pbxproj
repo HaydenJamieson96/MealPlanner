@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1002E874202DF7E00063AFAC /* DismissKeyboardWhenTappedAnywhere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1002E873202DF7E00063AFAC /* DismissKeyboardWhenTappedAnywhere.swift */; };
 		1073A4AF202B54F300506562 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073A4AE202B54F300506562 /* AppDelegate.swift */; };
 		1073A4B1202B54F300506562 /* ExploreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073A4B0202B54F300506562 /* ExploreVC.swift */; };
 		1073A4B4202B54F300506562 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1073A4B2202B54F300506562 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1002E873202DF7E00063AFAC /* DismissKeyboardWhenTappedAnywhere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardWhenTappedAnywhere.swift; sourceTree = "<group>"; };
 		1073A4AB202B54F300506562 /* MealPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1073A4AE202B54F300506562 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1073A4B0202B54F300506562 /* ExploreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreVC.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			children = (
 				109C7107202CAF4E002F04EE /* RoundTextField.swift */,
 				109C7109202CB5DC002F04EE /* RoundedButton.swift */,
+				1002E873202DF7E00063AFAC /* DismissKeyboardWhenTappedAnywhere.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				109C7108202CAF4E002F04EE /* RoundTextField.swift in Sources */,
 				1073A4EA202B5DAA00506562 /* CoreDataService.swift in Sources */,
 				1073A4AF202B54F300506562 /* AppDelegate.swift in Sources */,
+				1002E874202DF7E00063AFAC /* DismissKeyboardWhenTappedAnywhere.swift in Sources */,
 				1073A4E5202B565C00506562 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
