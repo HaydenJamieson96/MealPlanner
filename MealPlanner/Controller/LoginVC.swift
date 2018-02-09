@@ -10,8 +10,9 @@ import UIKit
 import FBSDKLoginKit
 import FBSDKCoreKit
 import Firebase
+import GoogleSignIn
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController , GIDSignInUIDelegate {
 
     @IBOutlet weak var emailField: RoundedTextField!
     @IBOutlet weak var passwordField: RoundedTextField!
@@ -21,6 +22,7 @@ class LoginVC: UIViewController {
         emailField.delegate = self
         passwordField.delegate = self
         self.hideKeyboardWhenTappedAround()
+        GIDSignIn.sharedInstance().uiDelegate = self
     }
     
     @IBAction func signInTapped(_ sender: Any) {
@@ -44,7 +46,7 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func gmailBtnTapped(_ sender: Any) {
-        
+        GIDSignIn.sharedInstance().signIn();
     }
     
     @IBAction func facebookBtnTapped(_ sender: Any) {

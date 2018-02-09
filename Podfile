@@ -13,6 +13,7 @@ target 'MealPlanner' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'FBSDKLoginKit'
+  pod 'GoogleSignIn'
   # Pods for MealPlanner
 
   target 'MealPlannerTests' do

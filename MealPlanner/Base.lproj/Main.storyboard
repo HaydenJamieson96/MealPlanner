@@ -24,9 +24,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TableBackground" translatesAutoresizingMaskIntoConstraints="NO" id="VCP-XJ-btB">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TableBackground" translatesAutoresizingMaskIntoConstraints="NO" id="VCP-XJ-btB">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vhh-6l-nGg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -169,15 +168,19 @@
                         <constraints>
                             <constraint firstItem="vvx-UQ-Upm" firstAttribute="leading" secondItem="yYS-TU-vs6" secondAttribute="leading" constant="30" id="4qb-hQ-g8e"/>
                             <constraint firstItem="Vhh-6l-nGg" firstAttribute="trailing" secondItem="yYS-TU-vs6" secondAttribute="trailing" id="5G9-8Q-rST"/>
+                            <constraint firstItem="VCP-XJ-btB" firstAttribute="bottom" secondItem="yYS-TU-vs6" secondAttribute="bottom" id="6Ih-ie-fkT"/>
                             <constraint firstItem="n03-Lh-67m" firstAttribute="leading" secondItem="yYS-TU-vs6" secondAttribute="leading" constant="30" id="6ky-qi-QD8"/>
                             <constraint firstItem="Vhh-6l-nGg" firstAttribute="bottom" secondItem="yYS-TU-vs6" secondAttribute="bottom" id="FJV-Uk-Kba"/>
                             <constraint firstItem="Vhh-6l-nGg" firstAttribute="top" secondItem="epg-b2-9Ks" secondAttribute="top" id="FjM-IF-s0x"/>
                             <constraint firstItem="zcR-W2-nnV" firstAttribute="top" secondItem="ecK-Ng-MGL" secondAttribute="bottom" constant="30" id="Gg0-LB-d3n"/>
                             <constraint firstItem="yYS-TU-vs6" firstAttribute="bottom" secondItem="LLb-Hd-NpB" secondAttribute="bottom" constant="8" id="GzR-KB-keu"/>
                             <constraint firstItem="ecK-Ng-MGL" firstAttribute="centerX" secondItem="epg-b2-9Ks" secondAttribute="centerX" id="IN6-Co-bF7"/>
+                            <constraint firstItem="VCP-XJ-btB" firstAttribute="leading" secondItem="yYS-TU-vs6" secondAttribute="leading" id="LcK-Oo-XlJ"/>
                             <constraint firstItem="yYS-TU-vs6" firstAttribute="trailing" secondItem="n03-Lh-67m" secondAttribute="trailing" constant="30" id="MmI-ce-F8M"/>
                             <constraint firstItem="6xk-MV-B9q" firstAttribute="top" secondItem="yYS-TU-vs6" secondAttribute="top" constant="96" id="QDH-JR-Kc5"/>
                             <constraint firstItem="yYS-TU-vs6" firstAttribute="trailing" secondItem="LLb-Hd-NpB" secondAttribute="trailing" constant="8" id="QMm-SH-9bp"/>
+                            <constraint firstItem="VCP-XJ-btB" firstAttribute="top" secondItem="epg-b2-9Ks" secondAttribute="top" id="Vbh-Cg-unw"/>
+                            <constraint firstItem="VCP-XJ-btB" firstAttribute="trailing" secondItem="yYS-TU-vs6" secondAttribute="trailing" id="X0X-29-kFA"/>
                             <constraint firstItem="6xk-MV-B9q" firstAttribute="centerX" secondItem="epg-b2-9Ks" secondAttribute="centerX" constant="-20" id="YN7-mv-Egb"/>
                             <constraint firstItem="yYS-TU-vs6" firstAttribute="trailing" secondItem="vvx-UQ-Upm" secondAttribute="trailing" constant="30" id="ZPc-eZ-fBd"/>
                             <constraint firstItem="Vhh-6l-nGg" firstAttribute="leading" secondItem="yYS-TU-vs6" secondAttribute="leading" id="eXe-9n-QkR"/>
