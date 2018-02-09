@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1002E874202DF7E00063AFAC /* DismissKeyboardWhenTappedAnywhere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1002E873202DF7E00063AFAC /* DismissKeyboardWhenTappedAnywhere.swift */; };
+		1002E876202DFB790063AFAC /* ErrorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1002E875202DFB790063AFAC /* ErrorController.swift */; };
 		1073A4AF202B54F300506562 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073A4AE202B54F300506562 /* AppDelegate.swift */; };
 		1073A4B1202B54F300506562 /* ExploreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073A4B0202B54F300506562 /* ExploreVC.swift */; };
 		1073A4B4202B54F300506562 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1073A4B2202B54F300506562 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		1002E873202DF7E00063AFAC /* DismissKeyboardWhenTappedAnywhere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardWhenTappedAnywhere.swift; sourceTree = "<group>"; };
+		1002E875202DFB790063AFAC /* ErrorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorController.swift; sourceTree = "<group>"; };
 		1073A4AB202B54F300506562 /* MealPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1073A4AE202B54F300506562 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1073A4B0202B54F300506562 /* ExploreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreVC.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				109C7107202CAF4E002F04EE /* RoundTextField.swift */,
 				109C7109202CB5DC002F04EE /* RoundedButton.swift */,
 				1002E873202DF7E00063AFAC /* DismissKeyboardWhenTappedAnywhere.swift */,
+				1002E875202DFB790063AFAC /* ErrorController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1002E876202DFB790063AFAC /* ErrorController.swift in Sources */,
 				1073A4B7202B54F300506562 /* MealPlanner.xcdatamodeld in Sources */,
 				1073A4B1202B54F300506562 /* ExploreVC.swift in Sources */,
 				109C7106202C9F30002F04EE /* LoginVC.swift in Sources */,

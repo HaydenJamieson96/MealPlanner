@@ -23,8 +23,6 @@ class LoginVC: UIViewController {
         self.hideKeyboardWhenTappedAround()
     }
     
-    // NEED TO SETUP Alert controller
-    
     @IBAction func signInTapped(_ sender: Any) {
         guard let email = emailField.text, let password = passwordField.text else { return }
         
@@ -34,9 +32,9 @@ class LoginVC: UIViewController {
             } else {
                 Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
                     if password.count <= 5 {
-                        print("Password must be longer than 5 characters")
+                        self.showError(withTitle: "Password too short", andMessage: "Password must be longer than 5 characters")
                     } else if error != nil {
-                        print("Unable to authenticate with Firebase using email")
+                        self.showError(withTitle: "Firebase Error", andMessage: "Unable to authenticate with Firebase using email")
                     } else {
                         print("Successfully authenticated with Firebase")
                     }
@@ -54,7 +52,7 @@ class LoginVC: UIViewController {
         
         facebookLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
             if error != nil {
-                print("Unable to authenticate with Facebook - \(error!)")
+                self.showError(withTitle: "Facebook Error", andMessage: "Unable to authenticate with Facebook")
             } else if result?.isCancelled == true {
                 print("User cancelled Facebook authentication")
             } else {
@@ -67,8 +65,8 @@ class LoginVC: UIViewController {
     
     func firebaseAuth(_ credential: AuthCredential) {
         Auth.auth().signIn(with: credential) { (user, error) in
-            if let error = error {
-                print("Unable to authenticate with Firebase - \(error)")
+            if error != nil {
+                self.showError(withTitle: "Firebase Error", andMessage: "Unable to authenticate with Firebase")
                 return
             }
             print("Sucessfully authenticated with Firebase")
