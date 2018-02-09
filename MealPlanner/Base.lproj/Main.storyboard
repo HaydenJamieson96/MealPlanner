@@ -29,7 +29,7 @@
                             </imageView>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vhh-6l-nGg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.28091534969999998" green="0.18145813050000001" blue="0.12559475" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.28235294117647058" green="0.1803921568627451" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="-30" translatesAutoresizingMaskIntoConstraints="NO" id="6xk-MV-B9q">
                                 <rect key="frame" x="13.5" y="116" width="308.5" height="72"/>
