@@ -21,11 +21,11 @@
 #import "FBSDKCoreKit+Internal.h"
 #import "FBSDKLoginTooltipView.h"
 
-static const CGFloat kFBLogoSize = 16.0;
-static const CGFloat kFBLogoLeftMargin = 6.0;
-static const CGFloat kButtonHeight = 28.0;
+static const CGFloat kFBLogoSize = 20.0;
+static const CGFloat kFBLogoLeftMargin = 10.0;
+static const CGFloat kButtonHeight = 42.0;
 static const CGFloat kRightMargin = 8.0;
-static const CGFloat kPaddingBetweenLogoTitle = 8.0;
+static const CGFloat kPaddingBetweenLogoTitle = 23.0;
 
 @interface FBSDKLoginButton() <FBSDKButtonImpressionTracking, UIActionSheetDelegate>
 @end
@@ -190,14 +190,14 @@ static const CGFloat kPaddingBetweenLogoTitle = 8.0;
              selectedIcon:nil
             selectedColor:[self backgroundColor]
  selectedHighlightedColor:nil];
-  self.titleLabel.textAlignment = NSTextAlignmentCenter;
+  self.titleLabel.textAlignment = NSTextAlignmentLeft;
   [self addConstraint:[NSLayoutConstraint constraintWithItem:self
                                                    attribute:NSLayoutAttributeHeight
                                                    relatedBy:NSLayoutRelationEqual
                                                       toItem:nil
                                                    attribute:NSLayoutAttributeNotAnAttribute
                                                   multiplier:1
-                                                    constant:28]];
+                                                    constant:42]];
   [self _updateContent];
 
   [self addTarget:self action:@selector(_buttonPressed:) forControlEvents:UIControlEventTouchUpInside];

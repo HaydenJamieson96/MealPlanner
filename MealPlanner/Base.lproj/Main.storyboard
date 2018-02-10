@@ -136,31 +136,30 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="zcR-W2-nnV">
-                                <rect key="frame" x="67.5" y="358" width="240" height="100"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dmo-X2-9V9">
+                                <rect key="frame" x="30" y="362" width="315" height="94"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEE-Tu-j01">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XE7-rC-T71" customClass="FBSDKLoginButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="42"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="7Ia-YT-yqh"/>
-                                            <constraint firstAttribute="width" constant="100" id="hSq-DX-QpR"/>
+                                            <constraint firstAttribute="height" constant="42" id="SKH-IF-Mun"/>
                                         </constraints>
-                                        <state key="normal" image="Facebook528"/>
                                         <connections>
-                                            <action selector="facebookBtnTapped:" destination="Upi-EN-zyW" eventType="touchUpInside" id="oin-Sq-66W"/>
+                                            <action selector="facebookBtnTapped:" destination="Upi-EN-zyW" eventType="valueChanged" id="sUc-ab-nyT"/>
+                                            <action selector="gmailBtnTapped:" destination="Upi-EN-zyW" eventType="valueChanged" id="uJO-ul-0Mz"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKz-f3-Kfz">
-                                        <rect key="frame" x="140" y="0.0" width="100" height="100"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5zy-ay-2UT" customClass="GIDSignInButton">
+                                        <rect key="frame" x="0.0" y="52" width="315" height="42"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="AIE-Xq-5cm"/>
-                                            <constraint firstAttribute="height" constant="100" id="Uag-hS-u6Y"/>
+                                            <constraint firstAttribute="height" constant="42" id="hRo-G9-Vxr"/>
                                         </constraints>
-                                        <state key="normal" image="Gmail528"/>
                                         <connections>
-                                            <action selector="gmailBtnTapped:" destination="Upi-EN-zyW" eventType="touchUpInside" id="hE5-jw-YWC"/>
+                                            <action selector="gmailBtnTapped:" destination="Upi-EN-zyW" eventType="valueChanged" id="BvC-c2-WQ6"/>
                                         </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -172,7 +171,6 @@
                             <constraint firstItem="n03-Lh-67m" firstAttribute="leading" secondItem="yYS-TU-vs6" secondAttribute="leading" constant="30" id="6ky-qi-QD8"/>
                             <constraint firstItem="Vhh-6l-nGg" firstAttribute="bottom" secondItem="yYS-TU-vs6" secondAttribute="bottom" id="FJV-Uk-Kba"/>
                             <constraint firstItem="Vhh-6l-nGg" firstAttribute="top" secondItem="epg-b2-9Ks" secondAttribute="top" id="FjM-IF-s0x"/>
-                            <constraint firstItem="zcR-W2-nnV" firstAttribute="top" secondItem="ecK-Ng-MGL" secondAttribute="bottom" constant="30" id="Gg0-LB-d3n"/>
                             <constraint firstItem="yYS-TU-vs6" firstAttribute="bottom" secondItem="LLb-Hd-NpB" secondAttribute="bottom" constant="8" id="GzR-KB-keu"/>
                             <constraint firstItem="ecK-Ng-MGL" firstAttribute="centerX" secondItem="epg-b2-9Ks" secondAttribute="centerX" id="IN6-Co-bF7"/>
                             <constraint firstItem="VCP-XJ-btB" firstAttribute="leading" secondItem="yYS-TU-vs6" secondAttribute="leading" id="LcK-Oo-XlJ"/>
@@ -186,20 +184,24 @@
                             <constraint firstItem="Vhh-6l-nGg" firstAttribute="leading" secondItem="yYS-TU-vs6" secondAttribute="leading" id="eXe-9n-QkR"/>
                             <constraint firstItem="LLb-Hd-NpB" firstAttribute="leading" secondItem="yYS-TU-vs6" secondAttribute="leading" constant="8" id="gUl-YP-bHS"/>
                             <constraint firstItem="ecK-Ng-MGL" firstAttribute="top" secondItem="n03-Lh-67m" secondAttribute="bottom" constant="16" id="gxO-gX-jNb"/>
-                            <constraint firstItem="zcR-W2-nnV" firstAttribute="centerX" secondItem="epg-b2-9Ks" secondAttribute="centerX" id="hja-Lc-Doz"/>
+                            <constraint firstItem="Dmo-X2-9V9" firstAttribute="top" secondItem="n03-Lh-67m" secondAttribute="bottom" constant="50" id="lLC-pK-7Br"/>
                             <constraint firstItem="LLb-Hd-NpB" firstAttribute="top" secondItem="vvx-UQ-Upm" secondAttribute="bottom" constant="18" id="pug-tF-Vjr"/>
+                            <constraint firstItem="Dmo-X2-9V9" firstAttribute="leading" secondItem="yYS-TU-vs6" secondAttribute="leading" constant="30" id="r6O-y9-fbQ"/>
+                            <constraint firstItem="yYS-TU-vs6" firstAttribute="trailing" secondItem="Dmo-X2-9V9" secondAttribute="trailing" constant="30" id="upm-D4-yUd"/>
                             <constraint firstItem="n03-Lh-67m" firstAttribute="top" secondItem="6xk-MV-B9q" secondAttribute="bottom" constant="30" id="v60-Vf-vG5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yYS-TU-vs6"/>
                     </view>
                     <connections>
                         <outlet property="emailField" destination="9pc-Oa-XAO" id="GIT-l5-eb3"/>
+                        <outlet property="fbLoginBtn" destination="XE7-rC-T71" id="IXv-7G-WP0"/>
+                        <outlet property="gmailSignInBtn" destination="5zy-ay-2UT" id="zsZ-GH-1ub"/>
                         <outlet property="passwordField" destination="zb0-8h-D3e" id="EI2-cH-EMF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uw7-Yn-P3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1047" y="45"/>
+            <point key="canvasLocation" x="-1047.2" y="44.527736131934034"/>
         </scene>
         <!--ExploreVC-->
         <scene sceneID="tne-QT-ifu">
@@ -218,8 +220,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Facebook528" width="528" height="528"/>
-        <image name="Gmail528" width="528" height="528"/>
         <image name="MealPlannerLogoWhite96" width="96" height="96"/>
         <image name="TableBackground" width="4872" height="2656"/>
     </resources>

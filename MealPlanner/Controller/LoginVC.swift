@@ -16,11 +16,27 @@ class LoginVC: UIViewController , GIDSignInUIDelegate {
 
     @IBOutlet weak var emailField: RoundedTextField!
     @IBOutlet weak var passwordField: RoundedTextField!
+    @IBOutlet weak var gmailSignInBtn: GIDSignInButton!
+    @IBOutlet weak var fbLoginBtn: FBSDKLoginButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         emailField.delegate = self
         passwordField.delegate = self
+        gmailSignInBtn.style = .wide
+        gmailSignInBtn.colorScheme = .light
+        
+    
+        let layoutConstraintsArr = fbLoginBtn.constraints
+        for lc in layoutConstraintsArr { // or attribute is NSLayoutAttributeHeight etc.
+            if lc.constant == 28 || lc.constant == 30 {
+                lc.isActive = false
+                break
+            } else if lc.constant == 315 {
+                lc.isActive = true
+            }
+        }
+        
         self.hideKeyboardWhenTappedAround()
         GIDSignIn.sharedInstance().uiDelegate = self
     }
@@ -45,6 +61,7 @@ class LoginVC: UIViewController , GIDSignInUIDelegate {
         }
     }
     
+   
     @IBAction func gmailBtnTapped(_ sender: Any) {
         GIDSignIn.sharedInstance().signIn();
     }
