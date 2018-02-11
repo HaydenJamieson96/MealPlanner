@@ -136,32 +136,29 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dmo-X2-9V9">
-                                <rect key="frame" x="30" y="362" width="315" height="94"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XE7-rC-T71" customClass="FBSDKLoginButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="315" height="42"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="42" id="SKH-IF-Mun"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="facebookBtnTapped:" destination="Upi-EN-zyW" eventType="valueChanged" id="sUc-ab-nyT"/>
-                                            <action selector="gmailBtnTapped:" destination="Upi-EN-zyW" eventType="valueChanged" id="uJO-ul-0Mz"/>
-                                        </connections>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5zy-ay-2UT" customClass="GIDSignInButton">
-                                        <rect key="frame" x="0.0" y="52" width="315" height="42"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="42" id="hRo-G9-Vxr"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="gmailBtnTapped:" destination="Upi-EN-zyW" eventType="valueChanged" id="BvC-c2-WQ6"/>
-                                        </connections>
-                                    </view>
-                                </subviews>
-                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XE7-rC-T71" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="37.5" y="362" width="300" height="42"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="MHv-PJ-dUo"/>
+                                    <constraint firstAttribute="height" constant="42" id="SKH-IF-Mun"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="facebookBtnTapped:" destination="Upi-EN-zyW" eventType="valueChanged" id="sUc-ab-nyT"/>
+                                    <action selector="gmailBtnTapped:" destination="Upi-EN-zyW" eventType="valueChanged" id="uJO-ul-0Mz"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zy-ay-2UT" customClass="GIDSignInButton">
+                                <rect key="frame" x="33.5" y="414" width="308" height="42"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="308" id="hNf-na-ceR"/>
+                                    <constraint firstAttribute="height" constant="42" id="hRo-G9-Vxr"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="gmailBtnTapped:" destination="Upi-EN-zyW" eventType="valueChanged" id="BvC-c2-WQ6"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -173,21 +170,22 @@
                             <constraint firstItem="Vhh-6l-nGg" firstAttribute="top" secondItem="epg-b2-9Ks" secondAttribute="top" id="FjM-IF-s0x"/>
                             <constraint firstItem="yYS-TU-vs6" firstAttribute="bottom" secondItem="LLb-Hd-NpB" secondAttribute="bottom" constant="8" id="GzR-KB-keu"/>
                             <constraint firstItem="ecK-Ng-MGL" firstAttribute="centerX" secondItem="epg-b2-9Ks" secondAttribute="centerX" id="IN6-Co-bF7"/>
+                            <constraint firstItem="XE7-rC-T71" firstAttribute="top" secondItem="n03-Lh-67m" secondAttribute="bottom" constant="50" id="J4w-WW-O4K"/>
                             <constraint firstItem="VCP-XJ-btB" firstAttribute="leading" secondItem="yYS-TU-vs6" secondAttribute="leading" id="LcK-Oo-XlJ"/>
                             <constraint firstItem="yYS-TU-vs6" firstAttribute="trailing" secondItem="n03-Lh-67m" secondAttribute="trailing" constant="30" id="MmI-ce-F8M"/>
                             <constraint firstItem="6xk-MV-B9q" firstAttribute="top" secondItem="yYS-TU-vs6" secondAttribute="top" constant="96" id="QDH-JR-Kc5"/>
                             <constraint firstItem="yYS-TU-vs6" firstAttribute="trailing" secondItem="LLb-Hd-NpB" secondAttribute="trailing" constant="8" id="QMm-SH-9bp"/>
                             <constraint firstItem="VCP-XJ-btB" firstAttribute="top" secondItem="epg-b2-9Ks" secondAttribute="top" id="Vbh-Cg-unw"/>
+                            <constraint firstItem="5zy-ay-2UT" firstAttribute="top" secondItem="XE7-rC-T71" secondAttribute="bottom" constant="10" id="WXH-ds-Rrn"/>
                             <constraint firstItem="VCP-XJ-btB" firstAttribute="trailing" secondItem="yYS-TU-vs6" secondAttribute="trailing" id="X0X-29-kFA"/>
                             <constraint firstItem="6xk-MV-B9q" firstAttribute="centerX" secondItem="epg-b2-9Ks" secondAttribute="centerX" constant="-20" id="YN7-mv-Egb"/>
                             <constraint firstItem="yYS-TU-vs6" firstAttribute="trailing" secondItem="vvx-UQ-Upm" secondAttribute="trailing" constant="30" id="ZPc-eZ-fBd"/>
+                            <constraint firstItem="5zy-ay-2UT" firstAttribute="centerX" secondItem="epg-b2-9Ks" secondAttribute="centerX" id="byP-GT-2uf"/>
                             <constraint firstItem="Vhh-6l-nGg" firstAttribute="leading" secondItem="yYS-TU-vs6" secondAttribute="leading" id="eXe-9n-QkR"/>
                             <constraint firstItem="LLb-Hd-NpB" firstAttribute="leading" secondItem="yYS-TU-vs6" secondAttribute="leading" constant="8" id="gUl-YP-bHS"/>
                             <constraint firstItem="ecK-Ng-MGL" firstAttribute="top" secondItem="n03-Lh-67m" secondAttribute="bottom" constant="16" id="gxO-gX-jNb"/>
-                            <constraint firstItem="Dmo-X2-9V9" firstAttribute="top" secondItem="n03-Lh-67m" secondAttribute="bottom" constant="50" id="lLC-pK-7Br"/>
+                            <constraint firstItem="XE7-rC-T71" firstAttribute="centerX" secondItem="epg-b2-9Ks" secondAttribute="centerX" id="kex-y2-rWR"/>
                             <constraint firstItem="LLb-Hd-NpB" firstAttribute="top" secondItem="vvx-UQ-Upm" secondAttribute="bottom" constant="18" id="pug-tF-Vjr"/>
-                            <constraint firstItem="Dmo-X2-9V9" firstAttribute="leading" secondItem="yYS-TU-vs6" secondAttribute="leading" constant="30" id="r6O-y9-fbQ"/>
-                            <constraint firstItem="yYS-TU-vs6" firstAttribute="trailing" secondItem="Dmo-X2-9V9" secondAttribute="trailing" constant="30" id="upm-D4-yUd"/>
                             <constraint firstItem="n03-Lh-67m" firstAttribute="top" secondItem="6xk-MV-B9q" secondAttribute="bottom" constant="30" id="v60-Vf-vG5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yYS-TU-vs6"/>

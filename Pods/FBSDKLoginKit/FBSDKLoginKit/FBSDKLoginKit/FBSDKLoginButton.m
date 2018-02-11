@@ -23,9 +23,9 @@
 
 static const CGFloat kFBLogoSize = 20.0;
 static const CGFloat kFBLogoLeftMargin = 10.0;
-static const CGFloat kButtonHeight = 42.0;
+static const CGFloat kButtonHeight = 41.0;
 static const CGFloat kRightMargin = 8.0;
-static const CGFloat kPaddingBetweenLogoTitle = 23.0;
+static const CGFloat kPaddingBetweenLogoTitle = 20.0;
 
 @interface FBSDKLoginButton() <FBSDKButtonImpressionTracking, UIActionSheetDelegate>
 @end
@@ -197,7 +197,7 @@ static const CGFloat kPaddingBetweenLogoTitle = 23.0;
                                                       toItem:nil
                                                    attribute:NSLayoutAttributeNotAnAttribute
                                                   multiplier:1
-                                                    constant:42]];
+                                                    constant:41]];
   [self _updateContent];
 
   [self addTarget:self action:@selector(_buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
