@@ -29,6 +29,16 @@
                             </imageView>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vhh-6l-nGg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wN-hZ-k76">
+                                        <rect key="frame" x="24" y="18" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="facebookBtnTapped:" destination="Upi-EN-zyW" eventType="touchUpInside" id="We9-h6-9H1"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="0.28235294117647058" green="0.1803921568627451" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="-30" translatesAutoresizingMaskIntoConstraints="NO" id="6xk-MV-B9q">
@@ -144,8 +154,7 @@
                                     <constraint firstAttribute="height" constant="42" id="SKH-IF-Mun"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="facebookBtnTapped:" destination="Upi-EN-zyW" eventType="valueChanged" id="sUc-ab-nyT"/>
-                                    <action selector="gmailBtnTapped:" destination="Upi-EN-zyW" eventType="valueChanged" id="uJO-ul-0Mz"/>
+                                    <action selector="facebookBtnTapped:" destination="Upi-EN-zyW" eventType="valueChanged" id="CCO-BC-hN7"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zy-ay-2UT" customClass="GIDSignInButton">
@@ -195,11 +204,12 @@
                         <outlet property="fbLoginBtn" destination="XE7-rC-T71" id="IXv-7G-WP0"/>
                         <outlet property="gmailSignInBtn" destination="5zy-ay-2UT" id="zsZ-GH-1ub"/>
                         <outlet property="passwordField" destination="zb0-8h-D3e" id="EI2-cH-EMF"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToExplore" id="FzJ-p4-ZTe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uw7-Yn-P3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1047.2" y="44.527736131934034"/>
+            <point key="canvasLocation" x="-1095" y="45"/>
         </scene>
         <!--ExploreVC-->
         <scene sceneID="tne-QT-ifu">
@@ -208,9 +218,27 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59e-bb-QW3">
+                                <rect key="frame" x="159" y="318.5" width="57" height="30"/>
+                                <state key="normal" title="Sign out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="signOutTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2oz-vP-6aI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.28235294119999998" green="0.18039215689999999" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="59e-bb-QW3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dtn-oT-NXR"/>
+                            <constraint firstItem="59e-bb-QW3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gN3-nb-qLW"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <segue destination="Upi-EN-zyW" kind="show" identifier="goToSignIn" id="Slv-Zj-XlT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

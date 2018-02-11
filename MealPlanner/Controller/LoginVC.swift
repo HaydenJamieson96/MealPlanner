@@ -11,6 +11,7 @@ import FBSDKLoginKit
 import FBSDKCoreKit
 import Firebase
 import GoogleSignIn
+import SwiftKeychainWrapper
 
 class LoginVC: UIViewController , GIDSignInUIDelegate {
 
@@ -21,6 +22,7 @@ class LoginVC: UIViewController , GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         emailField.delegate = self
         passwordField.delegate = self
         gmailSignInBtn.style = .wide
@@ -28,7 +30,7 @@ class LoginVC: UIViewController , GIDSignInUIDelegate {
         
     
         let layoutConstraintsArr = fbLoginBtn.constraints
-        for lc in layoutConstraintsArr { // or attribute is NSLayoutAttributeHeight etc.
+        for lc in layoutConstraintsArr {
             if lc.constant == 28 || lc.constant == 30 {
                 lc.isActive = false
                 break
@@ -41,12 +43,22 @@ class LoginVC: UIViewController , GIDSignInUIDelegate {
         GIDSignIn.sharedInstance().uiDelegate = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            performSegue(withIdentifier: "goToExplore", sender: nil)
+        }
+        
+    }
+    
     @IBAction func signInTapped(_ sender: Any) {
         guard let email = emailField.text, let password = passwordField.text else { return }
         
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if error == nil {
                 print("Email user authenticated with Firebase")
+                guard let user = user else {return}
+                self.completeSignIn(id: user.uid)
             } else {
                 Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
                     if password.count <= 5 {
@@ -55,6 +67,8 @@ class LoginVC: UIViewController , GIDSignInUIDelegate {
                         self.showError(withTitle: "Firebase Error", andMessage: "Unable to authenticate with Firebase using email")
                     } else {
                         print("Successfully authenticated with Firebase")
+                        guard let user = user else {return}
+                        self.completeSignIn(id: user.uid)
                     }
                 })
             }
@@ -85,11 +99,19 @@ class LoginVC: UIViewController , GIDSignInUIDelegate {
     func firebaseAuth(_ credential: AuthCredential) {
         Auth.auth().signIn(with: credential) { (user, error) in
             if error != nil {
+                print(error)
                 self.showError(withTitle: "Firebase Error", andMessage: "Unable to authenticate with Firebase")
                 return
             }
             print("Sucessfully authenticated with Firebase")
+            guard let user = user else {return}
+            self.completeSignIn(id: user.uid)
         }
+    }
+    
+    func completeSignIn(id: String) {
+        KeychainWrapper.standard.set(id, forKey: KEY_UID)
+        performSegue(withIdentifier: "goToExplore", sender: nil)
     }
     
 }

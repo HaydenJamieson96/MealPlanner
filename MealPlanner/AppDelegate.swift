@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import FBSDKLoginKit
+import SwiftKeychainWrapper
 
 
 @UIApplicationMain
@@ -55,6 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                                                        accessToken: authentication.accessToken)
         Auth.auth().signIn(with: credential) { (user, error) in
             print("Successfully signed into Firebase with Gmail")
+            guard let user = user else {return}
+            KeychainWrapper.standard.set(user.uid, forKey: KEY_UID)
+            self.window?.rootViewController?.performSegue(withIdentifier: "goToExplore", sender: nil)
         }
     }
     

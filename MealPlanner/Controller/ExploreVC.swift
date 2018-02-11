@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import SwiftKeychainWrapper
 
 class ExploreVC: UIViewController {
 
@@ -15,6 +17,12 @@ class ExploreVC: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    @IBAction func signOutTapped(_ sender: Any) {
+        KeychainWrapper.standard.removeObject(forKey: KEY_UID)
+        print("ID removed fvrom keychain")
+        try! Auth.auth().signOut()
+        performSegue(withIdentifier: "goToSignIn", sender: nil)
+    }
     
 
 }
