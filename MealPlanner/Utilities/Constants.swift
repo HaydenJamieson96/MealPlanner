@@ -6,7 +6,7 @@
 //  Copyright © 2018 Hayden Jamieson. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 let BASE_URL = "https://api.edamam.com/search?"
 let APP_ID = "&app_id=e79c3ce6"
@@ -27,3 +27,4 @@ let EXAMPLE_URL = "\(BASE_URL)\(QUERY_TEXT)chicken\(APP_ID)\(APP_KEY)\(FROM)\(TO
 //https://api.edamam.com/search?q=chicken&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&from=0&to=3&calories=gte%20591,%20lte%20722&health=alcohol-free
 
 let KEY_UID = "uid"
+let SHADOW_GRAY: CGFloat = 120.0 / 255.0

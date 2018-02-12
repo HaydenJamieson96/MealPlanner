@@ -20,6 +20,7 @@
 		1073A4E5202B565C00506562 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073A4E4202B565C00506562 /* Constants.swift */; };
 		1073A4E7202B5CD900506562 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1073A4E6202B5CD900506562 /* GoogleService-Info.plist */; };
 		1073A4EA202B5DAA00506562 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073A4E9202B5DAA00506562 /* CoreDataService.swift */; };
+		1096F7F42032024C0030F48B /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1096F7F32032024C0030F48B /* FancyView.swift */; };
 		109C7106202C9F30002F04EE /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109C7105202C9F30002F04EE /* LoginVC.swift */; };
 		109C7108202CAF4E002F04EE /* RoundTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109C7107202CAF4E002F04EE /* RoundTextField.swift */; };
 		109C710A202CB5DC002F04EE /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109C7109202CB5DC002F04EE /* RoundedButton.swift */; };
@@ -65,6 +66,7 @@
 		1073A4E4202B565C00506562 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1073A4E6202B5CD900506562 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1073A4E9202B5DAA00506562 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		1096F7F32032024C0030F48B /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyView.swift; sourceTree = "<group>"; };
 		109C7105202C9F30002F04EE /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		109C7107202CAF4E002F04EE /* RoundTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundTextField.swift; sourceTree = "<group>"; };
 		109C7109202CB5DC002F04EE /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		1073A4E0202B558300506562 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1096F7F32032024C0030F48B /* FancyView.swift */,
 				109C7107202CAF4E002F04EE /* RoundTextField.swift */,
 				109C7109202CB5DC002F04EE /* RoundedButton.swift */,
 				1002E873202DF7E00063AFAC /* DismissKeyboardWhenTappedAnywhere.swift */,
@@ -555,6 +558,7 @@
 				109C7106202C9F30002F04EE /* LoginVC.swift in Sources */,
 				109C710A202CB5DC002F04EE /* RoundedButton.swift in Sources */,
 				109C7108202CAF4E002F04EE /* RoundTextField.swift in Sources */,
+				1096F7F42032024C0030F48B /* FancyView.swift in Sources */,
 				1073A4EA202B5DAA00506562 /* CoreDataService.swift in Sources */,
 				1073A4AF202B54F300506562 /* AppDelegate.swift in Sources */,
 				1002E874202DF7E00063AFAC /* DismissKeyboardWhenTappedAnywhere.swift in Sources */,
