@@ -45,6 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         return googleHandler || facebookHandler
     }
     
+    // MARK: Google sign in delegate listener
+    
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         if let error = error {
             print(error.localizedDescription)
@@ -54,12 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
-        Auth.auth().signIn(with: credential) { (user, error) in
-            print("Successfully signed into Firebase with Gmail")
-            guard let user = user else {return}
-            KeychainWrapper.standard.set(user.uid, forKey: KEY_UID)
-            self.window?.rootViewController?.performSegue(withIdentifier: "goToExplore", sender: nil)
-        }
+        
+        let loginVC = LoginVC()
+        loginVC.firebaseAuth(credential, withVC: (self.window?.rootViewController)!)
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {

@@ -13,7 +13,7 @@ import Firebase
 import GoogleSignIn
 import SwiftKeychainWrapper
 
-class LoginVC: UIViewController , GIDSignInUIDelegate {
+class LoginVC: UIViewController , GIDSignInUIDelegate, FBSDKLoginButtonDelegate {
 
     @IBOutlet weak var emailField: RoundedTextField!
     @IBOutlet weak var passwordField: RoundedTextField!
@@ -27,7 +27,8 @@ class LoginVC: UIViewController , GIDSignInUIDelegate {
         passwordField.delegate = self
         gmailSignInBtn.style = .wide
         gmailSignInBtn.colorScheme = .light
-        
+        fbLoginBtn.delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
     
         let layoutConstraintsArr = fbLoginBtn.constraints
         for lc in layoutConstraintsArr {
@@ -40,7 +41,6 @@ class LoginVC: UIViewController , GIDSignInUIDelegate {
         }
         
         self.hideKeyboardWhenTappedAround()
-        GIDSignIn.sharedInstance().uiDelegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,6 +51,8 @@ class LoginVC: UIViewController , GIDSignInUIDelegate {
         
     }
     
+    // MARK: Email/password login
+    
     @IBAction func signInTapped(_ sender: Any) {
         guard let email = emailField.text, let password = passwordField.text else { return }
         
@@ -58,7 +60,7 @@ class LoginVC: UIViewController , GIDSignInUIDelegate {
             if error == nil {
                 print("Email user authenticated with Firebase")
                 guard let user = user else {return}
-                self.completeSignIn(id: user.uid)
+                self.completeSignIn(id: user.uid, withVC: self)
             } else {
                 Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
                     if password.count <= 5 {
@@ -68,50 +70,96 @@ class LoginVC: UIViewController , GIDSignInUIDelegate {
                     } else {
                         print("Successfully authenticated with Firebase")
                         guard let user = user else {return}
-                        self.completeSignIn(id: user.uid)
+                        self.completeSignIn(id: user.uid, withVC: self)
                     }
                 })
             }
         }
     }
     
-   
-    @IBAction func gmailBtnTapped(_ sender: Any) {
-        GIDSignIn.sharedInstance().signIn();
+    // MARK: Facebook Login
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        print("Successfully authenticated with Facebook")
+        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        self.firebaseAuth(credential, withVC: self)
+
     }
     
-    @IBAction func facebookBtnTapped(_ sender: Any) {
-        let facebookLogin = FBSDKLoginManager()
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        KeychainWrapper.standard.removeObject(forKey: KEY_UID)
+        print("ID removed fvrom keychain")
+        do {
+            try Auth.auth().signOut()
+        } catch let signOutError as NSError {
+            print("Error signing out :%@", signOutError)
+        }
         
-        facebookLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
-            if error != nil {
-                self.showError(withTitle: "Facebook Error", andMessage: "Unable to authenticate with Facebook")
-            } else if result?.isCancelled == true {
-                print("User cancelled Facebook authentication")
-            } else {
-                print("Successfully authenticated with Facebook")
-                let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-                self.firebaseAuth(credential)
-            }
-        }
     }
     
-    func firebaseAuth(_ credential: AuthCredential) {
-        Auth.auth().signIn(with: credential) { (user, error) in
-            if error != nil {
-                print(error)
-                self.showError(withTitle: "Firebase Error", andMessage: "Unable to authenticate with Firebase")
-                return
+//    @IBAction func facebookBtnTapped(_ sender: Any) {
+//        let facebookLogin = FBSDKLoginManager()
+//
+//        facebookLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
+//            if error != nil {
+//                self.showError(withTitle: "Facebook Error", andMessage: "Unable to authenticate with Facebook")
+//            } else if result?.isCancelled == true {
+//                print("User cancelled Facebook authentication")
+//            } else {
+//                print("Successfully authenticated with Facebook")
+//                let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+//                self.firebaseAuth(credential)
+//            }
+//        }
+//    }
+    
+    
+    
+    // MARK: Firebase Auth
+    
+    func firebaseAuth(_ credential: AuthCredential, withVC vc: UIViewController) {
+        
+        let currentUser = Auth.auth().currentUser
+        
+        if currentUser != nil {
+            Auth.auth().currentUser?.link(with: credential, completion: { (user, error) in
+                if user != nil && error == nil {
+                    print("Linked accounts")
+                    guard let user = user else {return}
+                    self.completeSignIn(id: user.uid, withVC: vc)
+                }
+            })
+        } else {
+            Auth.auth().signIn(with: credential) { (user, error) in
+                if error != nil {
+                    print(error!)
+                    self.showError(withTitle: "Firebase Error", andMessage: "Unable to authenticate with Firebase")
+                    return
+                }
+                print("Sucessfully authenticated with Firebase")
+                guard let user = user else {return}
+                user.link(with: credential, completion: { (user, error) in
+                    print("Linked user to credential")
+                })
+                self.completeSignIn(id: user.uid, withVC: vc)
             }
-            print("Sucessfully authenticated with Firebase")
-            guard let user = user else {return}
-            self.completeSignIn(id: user.uid)
         }
+        
+        
     }
     
-    func completeSignIn(id: String) {
+    // MARK: Keychain auto-sign in handling
+    
+    func completeSignIn(id: String, withVC vc: UIViewController) {
         KeychainWrapper.standard.set(id, forKey: KEY_UID)
-        performSegue(withIdentifier: "goToExplore", sender: nil)
+        DispatchQueue.main.async {
+            vc.performSegue(withIdentifier: "goToExplore", sender: nil)
+        }
+        
     }
     
 }

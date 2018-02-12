@@ -22,6 +22,7 @@ class ExploreVC: UIViewController {
         print("ID removed fvrom keychain")
         try! Auth.auth().signOut()
         performSegue(withIdentifier: "goToSignIn", sender: nil)
+        print(Auth.auth().currentUser as Any)
     }
     
 
