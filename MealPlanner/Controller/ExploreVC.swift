@@ -12,9 +12,15 @@ import SwiftKeychainWrapper
 
 class ExploreVC: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        tableView.delegate = self
+        tableView.dataSource = self
+        self.hideKeyboardWhenTappedAround()
+        
     }
 
     @IBAction func signOutTapped(_ sender: Any) {
@@ -25,6 +31,33 @@ class ExploreVC: UIViewController {
         print(Auth.auth().currentUser as Any)
     }
     
+    @IBAction func searchBtnTapped(_ sender: Any) {
+    }
+    
+    @IBAction func microphoneTapped(_ sender: Any) {
+    }
+    
+    @IBAction func filterTapped(_ sender: Any) {
+    }
+    
+    
+}
 
+extension ExploreVC: UITableViewDataSource, UITableViewDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 6
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell") as? RecipeCell else { return UITableViewCell() }
+        return cell
+    }
+    
+    
 }
 
