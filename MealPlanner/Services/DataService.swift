@@ -25,7 +25,7 @@ class DataService {
                 
                 do {
                     let json = try JSON(data: data)
-                    print(json)
+                    self.parseJSON(json: json)
                     completion(true)
                 } catch {
                      debugPrint(error.localizedDescription)
@@ -34,6 +34,31 @@ class DataService {
                 debugPrint(response.result.error as Any)
                 completion(false)
             }
+        }
+    }
+    
+    func parseJSON(json: JSON) {
+        guard let hitsArray = json["hits"].array else {return}
+        
+        for item in hitsArray {
+            guard let recipeDictionary = item["recipe"].dictionary else {return}
+            guard let recipeName = recipeDictionary["label"]?.stringValue else {return}
+            guard let recipeImageURL = recipeDictionary["image"]?.stringValue else {return}
+            guard let recipeSource = recipeDictionary["source"]?.stringValue else {return}
+            guard let recipeURL = recipeDictionary["url"]?.stringValue else {return}
+            guard let recipeYield = recipeDictionary["yield"]?.intValue else {return}
+            guard let recipeDietLabels = recipeDictionary["dietLabels"]?.arrayValue else {return}
+            guard let recipeHealthLabels = recipeDictionary["healthLabels"]?.arrayValue else {return}
+            guard let recipeIngredientLines = recipeDictionary["ingredientLines"]?.arrayValue else {return}
+            guard let recipeCalories = recipeDictionary["calories"]?.doubleValue else {return}
+            guard let recipeTotalDailyNutrientsDict = recipeDictionary["totalDaily"]?.dictionaryValue else {return}
+            
+            let newRecipe = Recipe(name: recipeName, source: recipeSource, imageURL: recipeImageURL, url: recipeURL, yield: recipeYield, dietLabels: recipeDietLabels, healthLabels: recipeHealthLabels, ingredientLines: recipeIngredientLines, calories: recipeCalories, totalDailyNutrients: recipeTotalDailyNutrientsDict)
+            
+            
+            print(newRecipe.name)
+            print(newRecipe.healthLabels)
+            print(newRecipe.totalDailyNutrients)
         }
     }
 }
