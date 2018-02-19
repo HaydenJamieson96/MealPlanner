@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import AlamofireImage
+import SDWebImage
+
 
 class RecipeCell: UITableViewCell {
 
@@ -43,6 +46,12 @@ class RecipeCell: UITableViewCell {
         if let yield = recipe.yield {
             self.recipeYield.text = "Feeds: \(yield)"
         }
+        
+        guard let url = URL(string: recipe.imageURL) else {return}
+        self.recipeImage?.af_setImage(withURL: url, placeholderImage: nil,
+                                    filter: nil,
+                                    imageTransition: .flipFromTop(0.2))
+        //recipeImage.sd_setImage(with: URL(string: recipe.imageURL), completed: nil)
     }
 
     

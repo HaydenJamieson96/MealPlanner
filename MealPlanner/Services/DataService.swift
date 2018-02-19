@@ -57,6 +57,7 @@ class DataService {
             
             let newRecipe = Recipe(name: recipeName, source: recipeSource, imageURL: recipeImageURL, url: recipeURL, yield: recipeYield, dietLabels: recipeDietLabels, healthLabels: recipeHealthLabels, ingredientLines: recipeIngredientLines, calories: recipeCalories, totalDailyNutrients: recipeTotalDailyNutrientsDict)
             recipeArray.append(newRecipe)
+            print(recipeImageURL)
         }
     }
 }

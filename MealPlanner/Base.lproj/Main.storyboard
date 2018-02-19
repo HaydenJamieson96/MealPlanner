@@ -289,7 +289,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yEu-vZ-PDj" customClass="FancyView" customModule="MealPlanner" customModuleProvider="target">
                                                     <rect key="frame" x="15" y="11" width="345" height="403"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="rVI-FN-X2l">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rVI-FN-X2l">
                                                             <rect key="frame" x="0.0" y="0.0" width="345" height="283.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="283.5" id="cBD-gV-yZe"/>
@@ -505,7 +505,6 @@
         <image name="filter" width="128" height="128"/>
         <image name="logout" width="128" height="128"/>
         <image name="microphone" width="128" height="128"/>
-        <image name="placeholder" width="1200" height="800"/>
         <image name="search" width="128" height="128"/>
     </resources>
 </document>
