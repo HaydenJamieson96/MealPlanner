@@ -36,7 +36,7 @@ class ExploreVC: UIViewController {
         
         DispatchQueue.global(qos: .userInitiated).async {
             DataService.shared.fetchRecipeWithQuery(queryText: queryText) { (success) in
-                //do stuff
+                self.tableView.reloadData()
             }
         }
         
@@ -58,11 +58,12 @@ extension ExploreVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return DataService.shared.recipeArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell") as? RecipeCell else { return UITableViewCell() }
+        cell.configureCell(withRecipe: DataService.shared.recipeArray[indexPath.row])
         return cell
     }
     

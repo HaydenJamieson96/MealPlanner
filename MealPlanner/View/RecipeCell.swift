@@ -24,8 +24,25 @@ class RecipeCell: UITableViewCell {
         // Initialization code
     }
     
-    func configureCell() {
+    func configureCell(withRecipe recipe: Recipe) {
+        /*
+            Using functional programming to convert the JSON array into a String array using map function, to allow us to join the array into a single string
+            to show.
+         */
+        let stringArr:[String] = recipe.dietLabels.map {"\($0)"}
+        let dietLabelString = stringArr.joined(separator: ", ")
         
+        self.recipeName.text = recipe.name
+        self.recipeSource.text = recipe.source
+        self.recipeDiet.text = dietLabelString
+        
+        if let calories = recipe.calories {
+            self.recipeCalories.text = "Calores: \(Double(round(1000*calories)/1000))"
+        }
+        
+        if let yield = recipe.yield {
+            self.recipeYield.text = "Feeds: \(yield)"
+        }
     }
 
     

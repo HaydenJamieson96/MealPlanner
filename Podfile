@@ -8,6 +8,7 @@ target 'MealPlanner' do
   use_frameworks!
   pod 'SwiftyJSON'
   pod 'Alamofire'
+  pod 'AlamofireImage', '~> 3.3'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'

@@ -14,6 +14,8 @@ class DataService {
     
     private init() {}
     
+    var recipeArray = [Recipe]()
+    
     static let shared = DataService()
     
     func fetchRecipeWithQuery(queryText: String, completion: @escaping CompletionHandler) {
@@ -54,11 +56,7 @@ class DataService {
             guard let recipeTotalDailyNutrientsDict = recipeDictionary["totalDaily"]?.dictionaryValue else {return}
             
             let newRecipe = Recipe(name: recipeName, source: recipeSource, imageURL: recipeImageURL, url: recipeURL, yield: recipeYield, dietLabels: recipeDietLabels, healthLabels: recipeHealthLabels, ingredientLines: recipeIngredientLines, calories: recipeCalories, totalDailyNutrients: recipeTotalDailyNutrientsDict)
-            
-            
-            print(newRecipe.name)
-            print(newRecipe.healthLabels)
-            print(newRecipe.totalDailyNutrients)
+            recipeArray.append(newRecipe)
         }
     }
 }
