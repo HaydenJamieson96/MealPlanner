@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1002E874202DF7E00063AFAC /* DismissKeyboardWhenTappedAnywhere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1002E873202DF7E00063AFAC /* DismissKeyboardWhenTappedAnywhere.swift */; };
 		1002E876202DFB790063AFAC /* ErrorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1002E875202DFB790063AFAC /* ErrorController.swift */; };
+		106604B02035D4A100D416FC /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106604AF2035D4A100D416FC /* DataService.swift */; };
 		1073A4AF202B54F300506562 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073A4AE202B54F300506562 /* AppDelegate.swift */; };
 		1073A4B1202B54F300506562 /* ExploreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073A4B0202B54F300506562 /* ExploreVC.swift */; };
 		1073A4B4202B54F300506562 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1073A4B2202B54F300506562 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 		109C7106202C9F30002F04EE /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109C7105202C9F30002F04EE /* LoginVC.swift */; };
 		109C7108202CAF4E002F04EE /* RoundTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109C7107202CAF4E002F04EE /* RoundTextField.swift */; };
 		109C710A202CB5DC002F04EE /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109C7109202CB5DC002F04EE /* RoundedButton.swift */; };
+		10D9B84420372076005CD4B8 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D9B84320372076005CD4B8 /* Recipe.swift */; };
 		10E5F2EE20332B4D00599C6B /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E5F2ED20332B4D00599C6B /* RecipeCell.swift */; };
 		10E5F2F020332D8F00599C6B /* FancyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E5F2EF20332D8F00599C6B /* FancyButton.swift */; };
 		10E5F2F22033307100599C6B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E5F2F12033307100599C6B /* GradientView.swift */; };
@@ -52,6 +54,7 @@
 /* Begin PBXFileReference section */
 		1002E873202DF7E00063AFAC /* DismissKeyboardWhenTappedAnywhere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardWhenTappedAnywhere.swift; sourceTree = "<group>"; };
 		1002E875202DFB790063AFAC /* ErrorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorController.swift; sourceTree = "<group>"; };
+		106604AF2035D4A100D416FC /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		1073A4AB202B54F300506562 /* MealPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1073A4AE202B54F300506562 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1073A4B0202B54F300506562 /* ExploreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreVC.swift; sourceTree = "<group>"; };
@@ -73,6 +76,7 @@
 		109C7105202C9F30002F04EE /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		109C7107202CAF4E002F04EE /* RoundTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundTextField.swift; sourceTree = "<group>"; };
 		109C7109202CB5DC002F04EE /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		10D9B84320372076005CD4B8 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		10E5F2ED20332B4D00599C6B /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		10E5F2EF20332D8F00599C6B /* FancyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyButton.swift; sourceTree = "<group>"; };
 		10E5F2F12033307100599C6B /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 		1073A4E1202B558600506562 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				10D9B84320372076005CD4B8 /* Recipe.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				1073A4E9202B5DAA00506562 /* CoreDataService.swift */,
+				106604AF2035D4A100D416FC /* DataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -570,11 +576,13 @@
 				109C7106202C9F30002F04EE /* LoginVC.swift in Sources */,
 				109C710A202CB5DC002F04EE /* RoundedButton.swift in Sources */,
 				109C7108202CAF4E002F04EE /* RoundTextField.swift in Sources */,
+				106604B02035D4A100D416FC /* DataService.swift in Sources */,
 				1096F7F42032024C0030F48B /* FancyView.swift in Sources */,
 				1073A4EA202B5DAA00506562 /* CoreDataService.swift in Sources */,
 				1073A4AF202B54F300506562 /* AppDelegate.swift in Sources */,
 				1002E874202DF7E00063AFAC /* DismissKeyboardWhenTappedAnywhere.swift in Sources */,
 				1073A4E5202B565C00506562 /* Constants.swift in Sources */,
+				10D9B84420372076005CD4B8 /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,7 +750,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = M42D57N49Z;
 				INFOPLIST_FILE = MealPlanner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HaydenJamieson.MealPlanner;
@@ -758,7 +766,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = M42D57N49Z;
 				INFOPLIST_FILE = MealPlanner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HaydenJamieson.MealPlanner;

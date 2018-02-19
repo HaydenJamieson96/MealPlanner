@@ -32,6 +32,14 @@ class ExploreVC: UIViewController {
     }
     
     @IBAction func searchBtnTapped(_ sender: Any) {
+        guard let queryText = searchField.text, searchField.text != nil else {return}
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            DataService.shared.fetchRecipeWithQuery(queryText: queryText) { (success) in
+                //do stuff
+            }
+        }
+        
     }
     
     @IBAction func microphoneTapped(_ sender: Any) {
