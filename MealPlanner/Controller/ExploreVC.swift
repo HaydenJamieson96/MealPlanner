@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SwiftKeychainWrapper
+import DZNEmptyDataSet
 
 class ExploreVC: UIViewController {
 
@@ -17,6 +18,8 @@ class ExploreVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
         tableView.delegate = self
         tableView.dataSource = self
         self.hideKeyboardWhenTappedAround()
@@ -95,4 +98,19 @@ extension ExploreVC: UITableViewDataSource, UITableViewDelegate {
     
     
 }
+
+extension ExploreVC: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let myAttributes = [ NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.4996827841, green: 0.3257399201, blue: 0.2722818255, alpha: 1) , NSAttributedStringKey.font: UIFont(name: "Avenir Next", size: 20)!] as [NSAttributedStringKey : Any]
+        return NSAttributedString(string: "No Recipes", attributes: myAttributes)
+    }
+    
+    func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
+    
+}
+
 

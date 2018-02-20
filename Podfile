@@ -17,6 +17,7 @@ target 'MealPlanner' do
   pod 'FBSDKLoginKit'
   pod 'GoogleSignIn'
   pod 'SwiftKeychainWrapper'
+  pod 'DZNEmptyDataSet'
   # Pods for MealPlanner
 
   target 'MealPlannerTests' do
