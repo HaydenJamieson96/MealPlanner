@@ -24,7 +24,9 @@ class RecipeCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        recipeImage.clipsToBounds = true
+        recipeImage.layer.cornerRadius = 10
+        recipeImage.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
     
     func configureCell(withRecipe recipe: Recipe) {

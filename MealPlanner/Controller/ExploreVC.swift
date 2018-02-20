@@ -67,6 +67,32 @@ extension ExploreVC: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // Fade
+        cell.alpha = 0
+        UIView.animate(withDuration: 0.33) {
+            cell.alpha = 1
+        }
+ 
+        
+        /*Frame
+        cell.layer.transform = CATransform3DTranslate(CATransform3DIdentity, -cell.frame.width, 1, 1)
+
+        UIView.animate(withDuration: 0.33) {
+          cell.layer.transform = CATransform3DIdentity
+         }
+         */
+        
+        
+        /* Curl
+        cell.layer.transform = CATransform3DScale(CATransform3DIdentity, -1, 1, 1)
+        
+        UIView.animate(withDuration: 0.4) {
+          cell.layer.transform = CATransform3DIdentity
+        }
+         */
+    }
+    
     
 }
 

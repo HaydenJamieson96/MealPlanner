@@ -19,6 +19,7 @@ class DataService {
     static let shared = DataService()
     
     func fetchRecipeWithQuery(queryText: String, completion: @escaping CompletionHandler) {
+        recipeArray = []
         let url = "\(QUERY_URL)\(queryText)\(API_SECURITY_CREDENTIALS)"
         
         Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in

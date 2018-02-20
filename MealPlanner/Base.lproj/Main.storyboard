@@ -240,12 +240,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8WP-B3-R1A" customClass="GradientView" customModule="MealPlanner" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mK-Xt-bgh">
-                                        <rect key="frame" x="152" y="29.5" width="72" height="27.5"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOk-QO-yp1">
                                         <rect key="frame" x="8" y="28" width="30" height="30"/>
                                         <constraints>
@@ -257,14 +251,20 @@
                                             <action selector="signOutTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uIh-1a-Cav"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Pm-d7-u3Y">
+                                        <rect key="frame" x="151.5" y="29.5" width="72" height="27.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.28235294119999998" green="0.18039215689999999" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstItem="6mK-Xt-bgh" firstAttribute="centerY" secondItem="8WP-B3-R1A" secondAttribute="centerY" constant="10" id="BfK-SI-fYG"/>
-                                    <constraint firstItem="6mK-Xt-bgh" firstAttribute="centerX" secondItem="8WP-B3-R1A" secondAttribute="centerX" id="Gpu-Nb-lfq"/>
-                                    <constraint firstItem="gOk-QO-yp1" firstAttribute="centerY" secondItem="6mK-Xt-bgh" secondAttribute="centerY" id="TWO-hl-eXS"/>
+                                    <constraint firstAttribute="bottom" secondItem="gOk-QO-yp1" secondAttribute="bottom" constant="7" id="ZoF-MC-O7a"/>
                                     <constraint firstAttribute="height" constant="65" id="m45-c6-k3L"/>
+                                    <constraint firstItem="8Pm-d7-u3Y" firstAttribute="centerY" secondItem="gOk-QO-yp1" secondAttribute="centerY" id="sj4-Rj-S5k"/>
                                     <constraint firstItem="gOk-QO-yp1" firstAttribute="leading" secondItem="8WP-B3-R1A" secondAttribute="leading" constant="8" id="uec-a7-PTk"/>
+                                    <constraint firstItem="8Pm-d7-u3Y" firstAttribute="centerX" secondItem="8WP-B3-R1A" secondAttribute="centerX" id="uzf-fX-bSo"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="topColor">
@@ -395,7 +395,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search from all recipes" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HbG-gY-4ZW">
                                                 <rect key="frame" x="30" y="0.0" width="250" height="25"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZ3-gQ-zvN">
