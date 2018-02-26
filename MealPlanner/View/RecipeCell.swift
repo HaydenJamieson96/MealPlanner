@@ -8,8 +8,6 @@
 
 import UIKit
 import AlamofireImage
-import SDWebImage
-
 
 class RecipeCell: UITableViewCell {
 
@@ -21,6 +19,8 @@ class RecipeCell: UITableViewCell {
     @IBOutlet weak var recipeYield: UILabel!
     @IBOutlet weak var recipeFavouriteBtn: FancyButton!
     
+    // Set maximum cache size and preferrred size to cut down to when max is reached
+    let imageCache = AutoPurgingImageCache(memoryCapacity: UInt64(100).megabytes(), preferredMemoryUsageAfterPurge: UInt64(60).megabytes())
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,13 +49,42 @@ class RecipeCell: UITableViewCell {
             self.recipeYield.text = "Feeds: \(yield)"
         }
         
-        guard let url = URL(string: recipe.imageURL) else {return}
-        self.recipeImage?.af_setImage(withURL: url, placeholderImage: nil,
-                                    filter: nil,
-                                    imageTransition: .flipFromTop(0.2))
-        //recipeImage.sd_setImage(with: URL(string: recipe.imageURL), completed: nil)
+        loadImage(recipe: recipe)
     }
-
     
+    // MARK: Image retrieval and image caching
+    
+    func loadImage(recipe: Recipe) {
+        guard let imageUrl = URL(string: recipe.imageURL) else {return}
+        
+        // Check if we have cached image before retrieving, if so, use it instead
+        if let image = cachedImage(for: recipe.imageURL) {
+            print("HJ: Using cached image")
+            recipeImage.image = image
+            return
+        }
+        
+        // Retrieve the image, create a cache for it using the URL as the identifier
+        self.recipeImage?.af_setImage(withURL: imageUrl, placeholderImage: nil,
+                                      filter: nil,
+                                      imageTransition: .flipFromTop(0.2))
+        if let imageToCache = recipeImage.image {
+            self.cache(imageToCache, for: recipe.imageURL)
+        }
+    }
+    
+    func cache(_ image: Image, for url: String) {
+        imageCache.add(image, withIdentifier: url)
+    }
+    
+    func cachedImage(for url: String) -> Image? {
+        return imageCache.image(withIdentifier: url)
+    }
+    
+}
 
+extension UInt64 {
+    func megabytes() -> UInt64 {
+        return self * 1024 * 1024
+    }
 }
