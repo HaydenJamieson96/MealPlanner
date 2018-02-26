@@ -13,6 +13,7 @@ import DZNEmptyDataSet
 
 class ExploreVC: UIViewController {
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchField: UITextField!
     
@@ -23,6 +24,8 @@ class ExploreVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         self.hideKeyboardWhenTappedAround()
+        activityIndicator.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        activityIndicator.isHidden = true
         
     }
 
@@ -35,10 +38,14 @@ class ExploreVC: UIViewController {
     }
     
     @IBAction func searchBtnTapped(_ sender: Any) {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         guard let queryText = searchField.text, searchField.text != nil else {return}
         
         DispatchQueue.global(qos: .userInitiated).async {
             DataService.shared.fetchRecipeWithQuery(queryText: queryText) { (success) in
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
                 self.tableView.reloadData()
             }
         }
