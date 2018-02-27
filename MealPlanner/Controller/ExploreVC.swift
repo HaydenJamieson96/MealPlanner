@@ -19,6 +19,7 @@ class ExploreVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchField.delegate = self
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
         tableView.delegate = self
@@ -26,6 +27,7 @@ class ExploreVC: UIViewController {
         self.hideKeyboardWhenTappedAround()
         activityIndicator.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         activityIndicator.isHidden = true
+        NotificationCenter.default.addObserver(self, selector: #selector(recipesLoaded(_:)), name: NOTIF_RECIPES_LOADED, object: nil)
         
     }
 
@@ -44,14 +46,20 @@ class ExploreVC: UIViewController {
         }
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
-        DispatchQueue.global(qos: .userInitiated).async {
+        DispatchQueue.global(qos: .background).async {
             DataService.shared.fetchRecipeWithQuery(queryText: queryText) { (success) in
                 self.activityIndicator.stopAnimating()
                 self.activityIndicator.isHidden = true
-                self.tableView.reloadData()
             }
         }
         
+    }
+    
+    @objc
+    func recipesLoaded(_ notif: Notification) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     @IBAction func microphoneTapped(_ sender: Any) {
@@ -62,6 +70,8 @@ class ExploreVC: UIViewController {
     
     
 }
+
+// MARK: Table view DS & Delegate
 
 extension ExploreVC: UITableViewDataSource, UITableViewDelegate {
     
@@ -107,6 +117,18 @@ extension ExploreVC: UITableViewDataSource, UITableViewDelegate {
     
     
 }
+
+// MARK: TextField delegate
+
+extension ExploreVC: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let allowedCharacters = CharacterSet.letters
+        let characterSet = CharacterSet(charactersIn: string)
+        return allowedCharacters.isSuperset(of: characterSet)
+    }
+}
+
+// MARK: EmptyDataSet DS & Delegate
 
 extension ExploreVC: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     

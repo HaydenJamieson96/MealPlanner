@@ -29,6 +29,7 @@ class DataService {
                 do {
                     let json = try JSON(data: data)
                     self.parseJSON(json: json)
+                    NotificationCenter.default.post(name: NOTIF_RECIPES_LOADED, object: nil)
                     completion(true)
                 } catch {
                      debugPrint(error.localizedDescription)

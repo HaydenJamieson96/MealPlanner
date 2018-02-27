@@ -14,7 +14,7 @@ let APP_ID = "&app_id=e79c3ce6"
 let APP_KEY = "&app_key=1672fdcf6bab01bfdcd5d18159b39fd9"
 let QUERY_TEXT = "q="
 let FROM = "&from=0"
-let TO = "&to=3"
+let TO = "&to=30"
 let DIET = "&diet="
 let HEALTH = "&health="
 let CALORIES = "&calories="
@@ -32,3 +32,5 @@ let KEY_UID = "uid"
 let SHADOW_GRAY: CGFloat = 120.0 / 255.0
 
 typealias CompletionHandler = (_ Success: Bool) -> ()
+
+let NOTIF_RECIPES_LOADED = Notification.Name(rawValue: "notifRecipesLoaded")
