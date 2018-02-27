@@ -29,6 +29,7 @@
 		10E5F2EE20332B4D00599C6B /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E5F2ED20332B4D00599C6B /* RecipeCell.swift */; };
 		10E5F2F020332D8F00599C6B /* FancyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E5F2EF20332D8F00599C6B /* FancyButton.swift */; };
 		10E5F2F22033307100599C6B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E5F2F12033307100599C6B /* GradientView.swift */; };
+		10F93FAC2045B71400268BD9 /* ImageCachingWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F93FAB2045B71400268BD9 /* ImageCachingWrapper.swift */; };
 		18D05626AE15C97220107F50 /* Pods_MealPlannerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60874868B95252113A683EB2 /* Pods_MealPlannerTests.framework */; };
 		91173D7EFCF4BEDC3D145606 /* Pods_MealPlannerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58EEDA34F3B2608433B6C61 /* Pods_MealPlannerUITests.framework */; };
 		CF6BA06ABABAD4D44F8BB622 /* Pods_MealPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DEBE534B17553EA27803215 /* Pods_MealPlanner.framework */; };
@@ -81,6 +82,7 @@
 		10E5F2ED20332B4D00599C6B /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		10E5F2EF20332D8F00599C6B /* FancyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyButton.swift; sourceTree = "<group>"; };
 		10E5F2F12033307100599C6B /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		10F93FAB2045B71400268BD9 /* ImageCachingWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCachingWrapper.swift; sourceTree = "<group>"; };
 		110D799DD5E10B933B1BDB6C /* Pods-MealPlannerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MealPlannerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MealPlannerTests/Pods-MealPlannerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2DEBE534B17553EA27803215 /* Pods_MealPlanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MealPlanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5124B22801C6413FCD1E9CD9 /* Pods-MealPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MealPlanner.release.xcconfig"; path = "Pods/Target Support Files/Pods-MealPlanner/Pods-MealPlanner.release.xcconfig"; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			children = (
 				1073A4E6202B5CD900506562 /* GoogleService-Info.plist */,
 				1073A4E4202B565C00506562 /* Constants.swift */,
+				10F93FAB2045B71400268BD9 /* ImageCachingWrapper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -589,6 +592,7 @@
 				1073A4EA202B5DAA00506562 /* CoreDataService.swift in Sources */,
 				1073A4AF202B54F300506562 /* AppDelegate.swift in Sources */,
 				1002E874202DF7E00063AFAC /* DismissKeyboardWhenTappedAnywhere.swift in Sources */,
+				10F93FAC2045B71400268BD9 /* ImageCachingWrapper.swift in Sources */,
 				1073A4E5202B565C00506562 /* Constants.swift in Sources */,
 				10D9B84420372076005CD4B8 /* Recipe.swift in Sources */,
 			);

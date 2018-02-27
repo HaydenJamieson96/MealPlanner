@@ -38,10 +38,12 @@ class ExploreVC: UIViewController {
     }
     
     @IBAction func searchBtnTapped(_ sender: Any) {
+        guard let queryText = searchField.text, searchField.text != "" else {
+            showError(withTitle: "Input Error", andMessage: "Please enter text to query the recipes database.")
+            return
+        }
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
-        guard let queryText = searchField.text, searchField.text != nil else {return}
-        
         DispatchQueue.global(qos: .userInitiated).async {
             DataService.shared.fetchRecipeWithQuery(queryText: queryText) { (success) in
                 self.activityIndicator.stopAnimating()
