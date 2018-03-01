@@ -458,6 +458,7 @@
                     <tabBarItem key="tabBarItem" systemItem="search" id="UBS-8F-z75"/>
                     <connections>
                         <outlet property="activityIndicator" destination="uO3-YE-goO" id="UZj-XC-ZoJ"/>
+                        <outlet property="microphoneBtn" destination="bZ3-gQ-zvN" id="etE-5s-2eZ"/>
                         <outlet property="searchField" destination="HbG-gY-4ZW" id="mB1-wm-2r6"/>
                         <outlet property="tableView" destination="1M8-ZH-pcs" id="epf-mS-OsQ"/>
                         <segue destination="Upi-EN-zyW" kind="show" identifier="goToSignIn" id="Slv-Zj-XlT"/>
