@@ -101,24 +101,6 @@ class LoginVC: UIViewController , GIDSignInUIDelegate, FBSDKLoginButtonDelegate 
         
     }
     
-//    @IBAction func facebookBtnTapped(_ sender: Any) {
-//        let facebookLogin = FBSDKLoginManager()
-//
-//        facebookLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
-//            if error != nil {
-//                self.showError(withTitle: "Facebook Error", andMessage: "Unable to authenticate with Facebook")
-//            } else if result?.isCancelled == true {
-//                print("User cancelled Facebook authentication")
-//            } else {
-//                print("Successfully authenticated with Facebook")
-//                let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-//                self.firebaseAuth(credential)
-//            }
-//        }
-//    }
-    
-    
-    
     // MARK: Firebase Auth
     
     func firebaseAuth(_ credential: AuthCredential, withVC vc: UIViewController) {
