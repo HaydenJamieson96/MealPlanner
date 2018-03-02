@@ -43,6 +43,9 @@ class LoginVC: UIViewController , GIDSignInUIDelegate, FBSDKLoginButtonDelegate 
         self.hideKeyboardWhenTappedAround()
     }
     
+    /**
+        This function handles our auto sign-in feature. If the Keychain finds a key for this device, we automatically navigate to ExploreVC.
+     */
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
@@ -53,6 +56,12 @@ class LoginVC: UIViewController , GIDSignInUIDelegate, FBSDKLoginButtonDelegate 
     
     // MARK: Email/password login
     
+    /**
+        This function handles our authentication using email and password. We safely unwrap the email/password text.
+        We call our Alamofire signIn function, passing our unwrapped email/password values as arguments.
+        We handle any error cases, and if the user already exists in Firebase database, we call our completeSignIn function passing in the user info to sign them in.
+        If there is no user in the database with that email identifier, we simply create a new user and call our completeSignIn function.
+     */
     @IBAction func signInTapped(_ sender: Any) {
         guard let email = emailField.text, let password = passwordField.text else { return }
         
@@ -79,6 +88,10 @@ class LoginVC: UIViewController , GIDSignInUIDelegate, FBSDKLoginButtonDelegate 
     
     // MARK: Facebook Login
     
+    /**
+        Delegate method for signing in. We grab the users credentials using the Firebase Facebook Auth provider, using the access token provided by the Facebook API.
+        We then call our Firebase Authentication handler using the Facebook credential we just created.
+     */
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if let error = error {
             print(error.localizedDescription)
@@ -90,6 +103,10 @@ class LoginVC: UIViewController , GIDSignInUIDelegate, FBSDKLoginButtonDelegate 
 
     }
     
+    /**
+        This delegate function is called when the Facebook logout button is pressed (automatically changes once logged in)
+        Remove the Key from the Keychain, sign out of Firebase.
+    */
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         print("ID removed fvrom keychain")
@@ -103,6 +120,15 @@ class LoginVC: UIViewController , GIDSignInUIDelegate, FBSDKLoginButtonDelegate 
     
     // MARK: Firebase Auth
     
+    /**
+        This function handles authenticating users with Firebase for Facebook and Google sign-in.
+        We grab the current user, if they already exist, we try to link them with the other providers. This is for when a user is trying to sign in using more than one provider, e.g. initially used Facebook, then wanted to use Google. The email is already used in the back end, so we link the accounts.
+        We sign the user in using the credential provided and link that user with other providers. Call the completeSignIn function once done.
+     
+        - Parameters:
+            - credential: The authentication credential used, e.g. Facebook credential
+            - vc: The view controller used to navigate, this is due to Google's delegate methods being contained in the App Delegate. It throws an error from the AppD as it cannot find the segue to navigate to ExploreVC.
+    */
     func firebaseAuth(_ credential: AuthCredential, withVC vc: UIViewController) {
         
         let currentUser = Auth.auth().currentUser
@@ -136,6 +162,10 @@ class LoginVC: UIViewController , GIDSignInUIDelegate, FBSDKLoginButtonDelegate 
     
     // MARK: Keychain auto-sign in handling
     
+    /**
+        This function handles adding the users key to the Keychain wrapper for auto log-in.
+        Navigate to ExploreVC.
+    */
     func completeSignIn(id: String, withVC vc: UIViewController) {
         KeychainWrapper.standard.set(id, forKey: KEY_UID)
         DispatchQueue.main.async {

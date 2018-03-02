@@ -42,6 +42,10 @@ class ExploreVC: UIViewController {
         requestSpeechAuthorization()
     }
 
+    /**
+        The IBAction for signing out. When this is called we remove the users key from the KeychainWrapper store to prevent further auto sign-in.
+        We then try to sign them out of Firebase Authentication services and navigate them back to LoginVC.
+     */
     @IBAction func signOutTapped(_ sender: Any) {
         KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         print("ID removed from keychain")
@@ -50,6 +54,12 @@ class ExploreVC: UIViewController {
         print(Auth.auth().currentUser as Any)
     }
     
+    /**
+        The IBAction for searching for a recipe. Safely unwraps the users search text, handling if they try to search on an empty string.
+        We unhide and start our spinner to show the user operations are taking place.
+        We call our DataService recipe request on a background thread to prevent and UI locking, passing in the users search text as the queryText argument, e.g. Chicken - search for all Chicken recipes. We use the completion handler success temp variable to stop animating our spinner and hide it as the web request has been succesful
+        Note: Our table view reloading is done via the DataService via our Notification.
+     */
     @IBAction func searchBtnTapped(_ sender: Any) {
         guard let queryText = searchField.text, searchField.text != "" else {
             showError(withTitle: "Input Error", andMessage: "Please enter text to query the recipes database.")
@@ -59,13 +69,21 @@ class ExploreVC: UIViewController {
         activityIndicator.startAnimating()
         DispatchQueue.global(qos: .background).async {
             DataService.shared.fetchRecipeWithQuery(queryText: queryText) { (success) in
-                self.activityIndicator.stopAnimating()
-                self.activityIndicator.isHidden = true
+                if success {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                }
             }
         }
         
     }
     
+    /**
+        The selector that is called when our VC observes a notification has been triggered and needs to reload the UI.
+     
+        - Parameter:
+            - The notification to observe
+     */
     @objc
     func recipesLoaded(_ notif: Notification) {
         DispatchQueue.main.async {
@@ -73,6 +91,11 @@ class ExploreVC: UIViewController {
         }
     }
     
+    /**
+        The IBAction for recording the users voice to query the API using speech-to-text instead of manual input.
+        We check if the audioEngine is running, stopping it if it is and re-enabling our record button.
+        Otherwise we call our record function which passes the speech into the search field, allowing us to fire our web request using the text within the search field, i.e. the users speech.
+    */
     @IBAction func microphoneTapped(_ sender: Any) {
         if audioEngine.isRunning {
             audioEngine.stop()
@@ -177,6 +200,9 @@ extension ExploreVC: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 
 extension ExploreVC: SFSpeechRecognizerDelegate {
     
+    /**
+        Handle the authorization status of the users device as we are working with sensitive data and require permission.
+     */
     func requestSpeechAuthorization() {
         SFSpeechRecognizer.requestAuthorization { (authStatus) in
             OperationQueue.main.addOperation {
@@ -200,15 +226,28 @@ extension ExploreVC: SFSpeechRecognizerDelegate {
         }
     }
     
+    /**
+        This function wraps our entire recording stack, it encompasses using our SpeechRecognizer, our Request and Task. The flow of the function is as followed;
+     
+        - Check if the recognition task is already running, cancelling it and nilling it if so.
+        - Create an AVAudioSession instance to prepare for audio recording. We set the Category of the session as recording, the Mode as measurement and we set the session to be active. Setting these properties may throw an exception hence I have wrapped them in a try catch clause.
+        - Instantiate a Recognition Request via a Request Object, to later pass the audio data to the Apple servers.
+        - Grab our audio engine (your device) as a variable, note that AudioEngine uses a Singleton and the inputNode is never nil (non-optional).
+        - Check if the request object is instantitated and not nil
+        - Report partial results of the speech recognition as the user speaks.
+        - Start the recognition task. The completion handler is called every time the recognition engine has received input, has refined its current recognition, or has been cancelled or stopped. It will return a final transcript.
+        - We set up a bool to determine if the recognition is the final recognition.
+        - If we have a result from our task, set the searchField text to the results best transcript, if the result is the final result then set our bool flag.
+        - If there is no error or the result is final, stop the audio engine input, stop the recognition request and task, enable the microphone.
+        - Add audio input to the recognition request. Note it is ok to add audio input after starting the recognition task, the speech framework will start recognizing it as soon as audio input has been added.
+        - Prepare and start the audio engine.
+     */
     func startRecording() {
-        // Check if recognition task is running, if so cancel task and recognition
         if recognitionTask != nil {
             recognitionTask?.cancel()
             recognitionTask = nil
         }
-        
-        // Create avaudiosession to preapre for audio recording, set category of the sessioon as recording, mode as measurement and active
-        // Note that setting these properties may throw an exception so you must wrap in a try catch clause
+   
         let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(AVAudioSessionCategoryRecord)
@@ -218,32 +257,25 @@ extension ExploreVC: SFSpeechRecognizerDelegate {
             print("Audio session properties were unable to be set")
         }
         
-        // Instantiate a recognition request, create request object to later pass audio data to apple servers
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         
-        // Grab audio engine (your device) as variable
         let inputNode = audioEngine.inputNode
         
-        // Check if request object is instantiated and not nil
         guard let recognitionRequest = recognitionRequest else {
             fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
         }
         
-        // Report partial results of speech recog as user speaks
         recognitionRequest.shouldReportPartialResults = true
         
-        // Start recognition by calling recog task. Completion handler called every time the recognition engine has received input, has refined its current recognition, or has been canceled or stopped, will return a final transcript
         recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
-            // bool to determine if recognition is final
+
             var isFinal = false
             
-            // If we have a result, set the text view text to results best transcript, if the result is the final result trigger our flag
             if result != nil {
                 self.searchField.text = result?.bestTranscription.formattedString
                 isFinal = (result?.isFinal)!
             }
             
-            // If there is no error or result is final, stop audio engine input. stop recog request and task, enable micrphone btn
             if error != nil || isFinal {
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
@@ -253,12 +285,10 @@ extension ExploreVC: SFSpeechRecognizerDelegate {
             }
         })
         
-        // add audio input to recog request, note it is ok to add audio input after starting recog task. Speech framework will start recognizing as soon as an audio input has been added
         let recordingFormat = inputNode.outputFormat(forBus: 0)
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
             self.recognitionRequest?.append(buffer)
         }
-        // preperae and start audioengine
         audioEngine.prepare()
         
         do {

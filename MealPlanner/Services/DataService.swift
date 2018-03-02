@@ -18,6 +18,17 @@ class DataService {
     
     static let shared = DataService()
     
+    /**
+        Fetches recipes from Edamam API using a query string parameter passed in to the request url, the query string is the type of recipe the user is searching for, e.g. Chicken.
+        Uses Alamofire to create a GET request, giving a response in JSON format handled using the completion handler provided which is then wrapped in a JSON object using SwiftyJSON.
+        Posts a recipes loaded notification once the web request has successfully completed and parsing of the JSON has completed. Our ExploreVC is acting as our observer and reloading the table view when it notices the notification has been fired off. 
+        Call this function on a background thread asynchronously and do any UI updates on the main thread.
+     
+     - Parameters:
+        - queryText: The text string the user is searching recipes for, e.g. Chicken
+        - completion: A completion handler using a type alias that takes a boolean as an argument and returns nothing. It is used to signal to the user that the function has successfully completed and hence perform any further operations
+     
+     */
     func fetchRecipeWithQuery(queryText: String, completion: @escaping CompletionHandler) {
         recipeArray = []
         let url = "\(QUERY_URL)\(queryText)\(API_SECURITY_CREDENTIALS)"
@@ -41,6 +52,14 @@ class DataService {
         }
     }
     
+    /**
+        A convinience function that takes in a JSON object using SwiftyJSON object notation and parses the objects properties, creating a new Recipe object using these parsed properties.
+        The new object is that appended to an array of Recipes that is used as the DataSource of the TableView on ExploreVC.
+        Note: SwiftyJSON has optionality built into its core, hence it will return the value if found or an empty property, e.g. empty string.
+     
+        - Parameters:
+            - json: The JSON object to be parsed
+     */
     func parseJSON(json: JSON) {
         guard let hitsArray = json["hits"].array else {return}
         
