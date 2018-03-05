@@ -145,7 +145,11 @@ extension ExploreVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell") as? RecipeCell else { return UITableViewCell() }
+        
+        //let updateCell = tableView.cellForRow(at: indexPath)
+       // if updateCell != nil {
         cell.configureCell(withRecipe: DataService.shared.recipeArray[indexPath.row])
+        //}
         return cell
     }
     

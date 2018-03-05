@@ -31,7 +31,7 @@ class DataService {
      */
     func fetchRecipeWithQuery(queryText: String, completion: @escaping CompletionHandler) {
         recipeArray = []
-        let url = "\(QUERY_URL)\(queryText)\(API_SECURITY_CREDENTIALS)"
+        let url = "\(QUERY_URL)\(queryText)\(API_SECURITY_CREDENTIALS)\(FROM)\(TO)"
         
         Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
             if response.result.error == nil {

@@ -38,6 +38,8 @@ class RecipeCell: UITableViewCell {
             - recipe: The Recipe object used to populate the cell contents
      */
     func configureCell(withRecipe recipe: Recipe) {
+        reset()
+
         let stringArr:[String] = recipe.dietLabels.map {"\($0)"}
         let dietLabelString = stringArr.joined(separator: ", ")
         
@@ -79,6 +81,14 @@ class RecipeCell: UITableViewCell {
         if let imageToCache = recipeImage.image {
             self.cacheWrapper?.cache(imageToCache, for: recipe.imageURL)
         }
+    }
+    
+    /*
+        Since Table Views reuse, we need to make sure we are loading the right image for each cell as we scroll. If the request is still in-flight when cell is reused, cell could be populated with wrong image.
+        General fix is to reset the cell - nil the image and cancel any request, then do the Cell configuration. I.e. Call reset at the start of configureCell()
+     */
+    func reset() {
+        recipeImage.image = nil
     }
 }
 
