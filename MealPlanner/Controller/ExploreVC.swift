@@ -93,18 +93,11 @@ class ExploreVC: UIViewController {
     
     /**
         The IBAction for recording the users voice to query the API using speech-to-text instead of manual input.
-        We check if the audioEngine is running, stopping it if it is and re-enabling our record button.
+        We check if the audioEngine is running, stopping it if it is and disabling our record button.
         Otherwise we call our record function which passes the speech into the search field, allowing us to fire our web request using the text within the search field, i.e. the users speech.
     */
     @IBAction func microphoneTapped(_ sender: Any) {
         if audioEngine.isRunning {
-            audioEngine.stop()
-            recognitionRequest?.endAudio()
-            microphoneBtn.isEnabled = false
-            // start recording button title
-        } else {
-            startRecording()
-            // stop recording btn title
             
             if let queryText = searchField.text, searchField.text != "" {
                 activityIndicator.isHidden = false
@@ -116,6 +109,19 @@ class ExploreVC: UIViewController {
                     }
                 }
             }
+            
+            audioEngine.stop()
+            recognitionRequest?.endAudio()
+            microphoneBtn.isEnabled = false
+            // start recording button title
+            
+           
+            
+        } else {
+            startRecording()
+            // stop recording btn title
+            
+            
         }
     }
     

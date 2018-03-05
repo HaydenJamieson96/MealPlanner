@@ -58,7 +58,6 @@ class RecipeCell: UITableViewCell {
     
     // MARK: Image retrieval and image caching
     
-    
     /**
         A function to load the recipe image using the imageURL for the specified Recipe object.
         We first safely unwrap the url, then we check to see if we have a cached image and if we do we use it.
